@@ -37,4 +37,10 @@ gulp.task('watch', function() {
     gulp.watch('scss/styles.scss', gulp.series('styles'));
 });
 
-task('deploy', () => src('./dist/**/*').pipe(ghPages()));
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+    return gulp.src("./dist/**/*")
+      .pipe(deploy())
+  })
