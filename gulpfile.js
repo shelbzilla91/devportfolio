@@ -4,9 +4,7 @@ var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var wait = require('gulp-wait');
 var rename = require('gulp-rename');
-var autoprefixer = require('gulp-autoprefixer');
-const {src, task}= require('gulp');
-const ghPages = require('gulp-gh-pages');
+
 
 gulp.task('scripts', function() {
     return gulp.src('js/scripts.js')
@@ -26,7 +24,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function () {
-    return gulp.src('./scss/styles.scss')
+    return gulp.src('/scss/styles.scss')
         .pipe(wait(250))
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest('./css'));
@@ -40,7 +38,3 @@ gulp.task('watch', function() {
 /**
  * Push build to gh-pages
  */
-gulp.task('deploy', function () {
-    return gulp.src("./dist/**/*")
-      .pipe(deploy())
-  })
